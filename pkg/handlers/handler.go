@@ -1,13 +1,27 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/MarikaKonturova/todo-go-app/pkg/service"
+	"github.com/gin-gonic/gin"
+)
 
 /*
 *директория для имплементации handler-ов
  */
 
-//пока пустая, но в дальнейшем добавим поля
+// пока пустая, но в дальнейшем добавим поля
 type Handler struct {
+	/*
+	*наши обработчики будут вызывать методы сервисов, потому добавим в нашу структуру указатель на сервис
+	 */
+	services *service.Service
+}
+
+/*
+*создадим конструктор, в который будем внедрять зависимости сервиса
+ */
+func NewHandler(services *service.Service) *Handler {
+	return &Handler{services: services}
 }
 
 /*
