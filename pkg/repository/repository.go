@@ -3,6 +3,8 @@
  */
 package repository
 
+import "github.com/jmoiron/sqlx"
+
 /*
  *называем интерфес согласно их доменной зоне, то есть участка бизнес-логики приложения, за которую они отвечают
  */
@@ -20,10 +22,10 @@ type Repository struct {
 	TodoItem
 }
 
-/*
- *объявим конструктор
- */
+/* 
+*поскольку наши репозитории должны работать с ДББ передаём аргументы в конструктор
+*/
 
-func NewRepository() *Repository {
+func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{}
 }
